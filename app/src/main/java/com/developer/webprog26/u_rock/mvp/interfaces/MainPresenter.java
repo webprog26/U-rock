@@ -14,6 +14,12 @@ public interface MainPresenter {
     int FAVORITES_SCREEN_FRAGMENT_INDEX = 3;
 
     /**
+     * Sets {@link MainView} to interact with
+     * @param mainView {@link MainView}
+     */
+    void setMainView(MainView mainView);
+
+    /**
      * Executes user search
      * @param userSearchRequest {@link String}
      */
