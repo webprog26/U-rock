@@ -1,12 +1,25 @@
 package com.developer.webprog26.u_rock.mvp.impls;
 
+import android.content.Context;
+import android.util.Log;
+
 import com.developer.webprog26.u_rock.mvp.interfaces.MainPresenter;
+import com.developer.webprog26.u_rock.mvp.interfaces.MainView;
 
 /**
  * {@link MainPresenter} implementation
  */
 
 public class MainPresenterImpl implements MainPresenter {
+
+    private static final String TAG = "MainPresenter";
+
+    private MainView mainView;
+
+    @Override
+    public void setMainView(MainView mainView) {
+
+    }
 
     @Override
     public void executeUserSearch(String userSearchRequest) {
@@ -29,22 +42,30 @@ public class MainPresenterImpl implements MainPresenter {
     }
 
     @Override
-    public void goToHomeScreen() {
-
+    public void setScreenFragment(Context context, int screenFragmentIndex) {
+        testFragmentSet(screenFragmentIndex);
     }
 
-    @Override
-    public void goToPopularScreen() {
-
+    private MainView getMainView() {
+        return mainView;
     }
 
-    @Override
-    public void goToRecommendedScreen() {
-
-    }
-
-    @Override
-    public void goToFavouritesScreen() {
-
+    private void testFragmentSet(final int fragmentIndex){
+        switch (fragmentIndex){
+            case HOME_SCREEN_FRAGMENT_INDEX:
+                Log.i(TAG, "Setting Home fragment");
+                break;
+            case ALL_CATEGORIES_SCREEN_FRAGMENT_INDEX:
+                Log.i(TAG, "Setting All categories fragment");
+                break;
+            case POPULAR_SCREEN_FRAGMENT_INDEX:
+                Log.i(TAG, "Setting Popular fragment");
+                break;
+            case FAVORITES_SCREEN_FRAGMENT_INDEX:
+                Log.i(TAG, "Setting Favorites fragment");
+                break;
+            default:
+                Log.i(TAG, "Something went wrong with setting fragment");
+        }
     }
 }
