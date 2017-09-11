@@ -1,10 +1,17 @@
 package com.developer.webprog26.u_rock.mvp.interfaces;
 
+import android.content.Context;
+
 /**
  * Manages app main screen actions
  */
 
 public interface MainPresenter {
+
+    int HOME_SCREEN_FRAGMENT_INDEX = 0;
+    int ALL_CATEGORIES_SCREEN_FRAGMENT_INDEX = 1;
+    int POPULAR_SCREEN_FRAGMENT_INDEX = 2;
+    int FAVORITES_SCREEN_FRAGMENT_INDEX = 3;
 
     /**
      * Executes user search
@@ -31,22 +38,7 @@ public interface MainPresenter {
     void notifyMainViewToSetNewCommentsMessage(final int newCommentsNumber);
 
     /**
-     * Switches app screen to home
+     * Changes fragments on app screen depending on index param
      */
-    void goToHomeScreen();
-
-    /**
-     * Switches app screen to popular
-     */
-    void goToPopularScreen();
-
-    /**
-     * Switches app screen to recommended
-     */
-    void goToRecommendedScreen();
-
-    /**
-     * Switches app screen to favourites
-     */
-    void goToFavouritesScreen();
+    void setScreenFragment(final Context context, final int screenFragmentIndex);
 }
