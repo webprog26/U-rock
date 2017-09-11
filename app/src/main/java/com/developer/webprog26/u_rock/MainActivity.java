@@ -25,6 +25,9 @@ public class MainActivity extends BaseActivity implements MainView{
 
         mainPresenter.setMainView(this);
 
+        //Todo just for test
+        mainPresenter.setScreenFragment(this, MainPresenter.HOME_SCREEN_FRAGMENT_INDEX);
+
     }
 
     @Override
