@@ -1,5 +1,7 @@
 package com.developer.webprog26.u_rock.mvp.impls;
 
+import android.content.Context;
+
 import com.developer.webprog26.u_rock.mvp.interfaces.MainPresenter;
 
 /**
@@ -29,22 +31,7 @@ public class MainPresenterImpl implements MainPresenter {
     }
 
     @Override
-    public void goToHomeScreen() {
-
-    }
-
-    @Override
-    public void goToPopularScreen() {
-
-    }
-
-    @Override
-    public void goToRecommendedScreen() {
-
-    }
-
-    @Override
-    public void goToFavouritesScreen() {
+    public void setScreenFragment(Context context, int screenFragmentIndex) {
 
     }
 }
