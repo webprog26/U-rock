@@ -1,4 +1,4 @@
-package com.developer.webprog26.u_rock.mvp;
+package com.developer.webprog26.u_rock.mvp.interfaces;
 
 /**
  * Manages app main screen actions

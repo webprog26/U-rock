@@ -3,7 +3,7 @@ package com.developer.webprog26.u_rock;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
-import com.developer.webprog26.u_rock.mvp.MainView;
+import com.developer.webprog26.u_rock.mvp.interfaces.MainView;
 
 import java.util.ArrayList;
 

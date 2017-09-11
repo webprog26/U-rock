@@ -1,4 +1,4 @@
-package com.developer.webprog26.u_rock.mvp;
+package com.developer.webprog26.u_rock.mvp.interfaces;
 
 import com.developer.webprog26.u_rock.Article;
 
