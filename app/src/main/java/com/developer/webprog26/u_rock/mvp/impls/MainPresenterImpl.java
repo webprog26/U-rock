@@ -55,13 +55,13 @@ public class MainPresenterImpl implements MainPresenter {
             case HOME_SCREEN_FRAGMENT_INDEX:
                 Log.i(TAG, "Setting Home fragment");
                 break;
-            case ALL_CATEGORIES_SCREEN_FRAGMENT_INDEX:
-                Log.i(TAG, "Setting All categories fragment");
-                break;
             case POPULAR_SCREEN_FRAGMENT_INDEX:
                 Log.i(TAG, "Setting Popular fragment");
                 break;
-            case FAVORITES_SCREEN_FRAGMENT_INDEX:
+            case RECOMMENDED_SCREEN_FRAGMENT_INDEX:
+                Log.i(TAG, "Setting All categories fragment");
+                break;
+            case BOOKMARKS_SCREEN_FRAGMENT_INDEX:
                 Log.i(TAG, "Setting Favorites fragment");
                 break;
             default:
