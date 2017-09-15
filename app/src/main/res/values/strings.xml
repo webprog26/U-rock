@@ -1,3 +1,9 @@
 <resources>
     <string name="app_name">U-Rock</string>
+
+    <!--Bottom toolbar menu items-->
+    <string name="all_categories">All categories</string>
+    <string name="popular">Popular</string>
+    <string name="recommended">Recommended</string>
+    <string name="bookmarks">Bookmarks</string>
 </resources>
