@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:id="@+id/action_all_categories"
+        android:enabled="true"
+        android:icon="@drawable/ic_receipt_white_24dp"
+        android:title="@string/all_categories"
+        app:showAsAction="ifRoom" />
+    <item
+        android:id="@+id/action_popular"
+        android:enabled="true"
+        android:icon="@drawable/ic_favorite_white_24dp"
+        android:title="@string/popular"
+        app:showAsAction="ifRoom" />
+    <item
+        android:id="@+id/action_recommended"
+        android:enabled="true"
+        android:icon="@drawable/ic_star_rate_white_18dp"
+        android:title="@string/recommended"
+        app:showAsAction="ifRoom" />
+    <item
+        android:id="@+id/action_bookmarks"
+        android:enabled="true"
+        android:icon="@drawable/ic_bookmark_white_18dp"
+        android:title="@string/bookmarks"
+        app:showAsAction="ifRoom" />
+</menu>

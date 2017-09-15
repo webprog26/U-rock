@@ -9,9 +9,9 @@ import android.content.Context;
 public interface MainPresenter {
 
     int HOME_SCREEN_FRAGMENT_INDEX = 0;
-    int ALL_CATEGORIES_SCREEN_FRAGMENT_INDEX = 1;
-    int POPULAR_SCREEN_FRAGMENT_INDEX = 2;
-    int FAVORITES_SCREEN_FRAGMENT_INDEX = 3;
+    int POPULAR_SCREEN_FRAGMENT_INDEX = 1;
+    int RECOMMENDED_SCREEN_FRAGMENT_INDEX = 2;
+    int BOOKMARKS_SCREEN_FRAGMENT_INDEX = 3;
 
     /**
      * Sets {@link MainView} to interact with
