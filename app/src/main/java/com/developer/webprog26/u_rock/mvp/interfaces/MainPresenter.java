@@ -1,7 +1,5 @@
 package com.developer.webprog26.u_rock.mvp.interfaces;
 
-import android.content.Context;
-
 /**
  * Manages app main screen actions
  */
@@ -13,6 +11,10 @@ public interface MainPresenter {
     int RECOMMENDED_SCREEN_FRAGMENT_INDEX = 2;
     int BOOKMARKS_SCREEN_FRAGMENT_INDEX = 3;
 
+    String HOME_SCREEN_FRAGMENT_TAG = "home_screen_fragment_tag";
+    String POPULAR_SCREEN_FRAGMENT_TAG = "popular_screen_fragment_tag";
+    String RECOMMENDED_SCREEN_FRAGMENT_TAG = "recommended_screen_fragment_tag";
+    String BOOKMARKS_SCREEN_FRAGMENT_TAG = "bookmarks_screen_fragment_tag";
     /**
      * Sets {@link MainView} to interact with
      * @param mainView {@link MainView}
@@ -26,25 +28,7 @@ public interface MainPresenter {
     void executeUserSearch(final String userSearchRequest);
 
     /**
-     * Notifies {@link MainView} to set user greetings message
-     * @param userName {@link String}
-     */
-    void notifyMainViewToSetUserGreetingsMessage(final String userName);
-
-    /**
-     * Notifies {@link MainView} to set user greetings message
-     * @param newArticlesNumber int
-     */
-    void notifyMainViewToSetNewArticlesMessage(final int newArticlesNumber);
-
-    /**
-     * Notifies {@link MainView} to set user greetings message
-     * @param newCommentsNumber int
-     */
-    void notifyMainViewToSetNewCommentsMessage(final int newCommentsNumber);
-
-    /**
      * Changes fragments on app screen depending on index param
      */
-    void setScreenFragment(final Context context, final int screenFragmentIndex);
+    void setScreenFragment(final int screenFragmentIndex);
 }

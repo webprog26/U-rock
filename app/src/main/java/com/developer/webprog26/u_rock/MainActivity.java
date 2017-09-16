@@ -1,7 +1,10 @@
 package com.developer.webprog26.u_rock;
 
 import android.os.Bundle;
+import android.support.annotation.IdRes;
+import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
+import android.support.v4.app.FragmentManager;
 
 import com.developer.webprog26.u_rock.app.URockApplication;
 import com.developer.webprog26.u_rock.di.modules.MainPresenterModule;
@@ -18,8 +21,13 @@ import butterknife.ButterKnife;
 
 public class MainActivity extends BaseActivity implements MainView{
 
+    @IdRes
+    private static final int CONTAINER_RES_ID = R.id.fl_container;
+
     @Inject
     MainPresenter mainPresenter;
+
+    private FragmentManager mExistingFragmentManager;
 
     @BindView(R.id.bottom_navigation)
     BottomNavigationView mBottomNavigationToolbar;
@@ -31,12 +39,14 @@ public class MainActivity extends BaseActivity implements MainView{
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
 
+        mExistingFragmentManager = getSupportFragmentManager();
+
         final MainPresenter mainPresenter = getMainPresenter();
 
         mainPresenter.setMainView(this);
 
         getBottomNavigationToolbar()
-                .setOnNavigationItemSelectedListener(new BottomToolbarActionsListener(getMainPresenter(), this));
+                .setOnNavigationItemSelectedListener(new BottomToolbarActionsListener(getMainPresenter()));
 
     }
 
@@ -46,27 +56,23 @@ public class MainActivity extends BaseActivity implements MainView{
     }
 
     @Override
-    public void setGreetingsMessage(String userName) {
-
+    public int getContainerResId() {
+        return CONTAINER_RES_ID;
     }
 
+
+    @NonNull
     @Override
-    public void setNewArticlesMessage(int newArticlesNumber) {
-
-    }
-
-    @Override
-    public void setNewCommentsMessage(int newCommentsNumber) {
-
-    }
-
-    @Override
-    public void updateArticlesListOnTheMainScreen(ArrayList<Article> articles) {
-
+    public FragmentManager getScreenFragmentManager() {
+        return getExistingFragmentManager();
     }
 
     private MainPresenter getMainPresenter() {
         return mainPresenter;
+    }
+
+    private FragmentManager getExistingFragmentManager() {
+        return mExistingFragmentManager;
     }
 
     private BottomNavigationView getBottomNavigationToolbar() {
