@@ -19,6 +19,13 @@ public class MainPresenterImpl implements MainPresenter {
 
     private static final String TAG = "MainPresenter";
 
+    private static final String[] fragmentsTags = new String[]{
+            HOME_SCREEN_FRAGMENT_TAG,
+            POPULAR_SCREEN_FRAGMENT_TAG,
+            RECOMMENDED_SCREEN_FRAGMENT_TAG,
+            BOOKMARKS_SCREEN_FRAGMENT_TAG
+    };
+
     private MainView mainView;
 
     @Override
@@ -35,29 +42,38 @@ public class MainPresenterImpl implements MainPresenter {
     public void setScreenFragment(int screenFragmentIndex) {
         testFragmentSet(screenFragmentIndex);
         BaseFragment fragment = null;
+        String fragmentTAG = null;
         switch (screenFragmentIndex) {
             case HOME_SCREEN_FRAGMENT_INDEX:
                 fragment = new HomeScreenFragment();
+                fragmentTAG = getFragmentsTags()[HOME_SCREEN_FRAGMENT_INDEX];
                 break;
             case POPULAR_SCREEN_FRAGMENT_INDEX:
                 fragment = new PopularScreenFragment();
+                fragmentTAG = getFragmentsTags()[POPULAR_SCREEN_FRAGMENT_INDEX];
                 break;
             case RECOMMENDED_SCREEN_FRAGMENT_INDEX:
                 fragment = new RecommendedScreenFragment();
+                fragmentTAG = getFragmentsTags()[RECOMMENDED_SCREEN_FRAGMENT_INDEX];
                 break;
             case BOOKMARKS_SCREEN_FRAGMENT_INDEX:
                 fragment = new BookmarksScreenFragment();
+                fragmentTAG = getFragmentsTags()[BOOKMARKS_SCREEN_FRAGMENT_INDEX];
                 break;
             }
 
-        if(fragment != null) {
+        if(fragment != null && fragmentTAG != null) {
             FragmentChangeHelper.changeFragment(getMainView().getScreenFragmentManager(),
-                    getMainView().getContainerResId(), fragment, HOME_SCREEN_FRAGMENT_TAG);
+                    getMainView().getContainerResId(), fragment, fragmentTAG);
         }
     }
 
     private MainView getMainView() {
         return mainView;
+    }
+
+    private static String[] getFragmentsTags() {
+        return fragmentsTags;
     }
 
     private void testFragmentSet(final int fragmentIndex){
