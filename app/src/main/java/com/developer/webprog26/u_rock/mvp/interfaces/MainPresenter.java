@@ -27,6 +27,8 @@ public interface MainPresenter {
      */
     void executeUserSearch(final String userSearchRequest);
 
+    void setStartFragment();
+
     /**
      * Changes fragments on app screen depending on index param
      */
