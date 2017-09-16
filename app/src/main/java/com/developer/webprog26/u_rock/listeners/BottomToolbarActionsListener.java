@@ -1,6 +1,5 @@
 package com.developer.webprog26.u_rock.listeners;
 
-import android.content.Context;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
 import android.view.MenuItem;
@@ -15,28 +14,25 @@ import com.developer.webprog26.u_rock.mvp.interfaces.MainPresenter;
 public class BottomToolbarActionsListener implements BottomNavigationView.OnNavigationItemSelectedListener {
 
     private final MainPresenter mainPresenter;
-    private final Context mContext;
 
-    public BottomToolbarActionsListener(MainPresenter mainPresenter, Context context) {
+    public BottomToolbarActionsListener(MainPresenter mainPresenter) {
         this.mainPresenter = mainPresenter;
-        this.mContext = context;
     }
 
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-        final Context context = getContext();
         switch (item.getItemId()){
             case R.id.action_all_categories:
-                getMainPresenter().setScreenFragment(context, MainPresenter.HOME_SCREEN_FRAGMENT_INDEX);
+                getMainPresenter().setScreenFragment(MainPresenter.HOME_SCREEN_FRAGMENT_INDEX);
                 break;
             case R.id.action_popular:
-                getMainPresenter().setScreenFragment(context, MainPresenter.POPULAR_SCREEN_FRAGMENT_INDEX);
+                getMainPresenter().setScreenFragment(MainPresenter.POPULAR_SCREEN_FRAGMENT_INDEX);
                 break;
             case R.id.action_recommended:
-                getMainPresenter().setScreenFragment(context, MainPresenter.RECOMMENDED_SCREEN_FRAGMENT_INDEX);
+                getMainPresenter().setScreenFragment(MainPresenter.RECOMMENDED_SCREEN_FRAGMENT_INDEX);
                 break;
             case R.id.action_bookmarks:
-                getMainPresenter().setScreenFragment(context, MainPresenter.BOOKMARKS_SCREEN_FRAGMENT_INDEX);
+                getMainPresenter().setScreenFragment(MainPresenter.BOOKMARKS_SCREEN_FRAGMENT_INDEX);
                 break;
         }
         return true;
@@ -44,9 +40,5 @@ public class BottomToolbarActionsListener implements BottomNavigationView.OnNavi
 
     private MainPresenter getMainPresenter() {
         return mainPresenter;
-    }
-
-    private Context getContext() {
-        return mContext;
     }
 }
