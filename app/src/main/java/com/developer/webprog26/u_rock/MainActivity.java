@@ -51,6 +51,7 @@ public class MainActivity extends BaseActivity implements MainView{
 
         getBottomNavigationToolbar()
                 .setOnNavigationItemSelectedListener(new BottomToolbarActionsListener(getMainPresenter()));
+        getBottomNavigationToolbar().set
 
     }
 
