@@ -39,6 +39,11 @@ public class MainPresenterImpl implements MainPresenter {
     }
 
     @Override
+    public void setStartFragment() {
+        setScreenFragment(HOME_SCREEN_FRAGMENT_INDEX);
+    }
+
+    @Override
     public void setScreenFragment(int screenFragmentIndex) {
         testFragmentSet(screenFragmentIndex);
         BaseFragment fragment = null;

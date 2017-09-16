@@ -45,6 +45,10 @@ public class MainActivity extends BaseActivity implements MainView{
 
         mainPresenter.setMainView(this);
 
+        if(savedInstanceState == null) {
+            mainPresenter.setStartFragment();
+        }
+
         getBottomNavigationToolbar()
                 .setOnNavigationItemSelectedListener(new BottomToolbarActionsListener(getMainPresenter()));
 
