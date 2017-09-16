@@ -2,6 +2,7 @@ package com.developer.webprog26.u_rock.mvp.impls;
 
 import android.util.Log;
 
+import com.developer.webprog26.u_rock.R;
 import com.developer.webprog26.u_rock.fragments.BaseFragment;
 import com.developer.webprog26.u_rock.fragments.BookmarksScreenFragment;
 import com.developer.webprog26.u_rock.fragments.HomeScreenFragment;
@@ -26,6 +27,13 @@ public class MainPresenterImpl implements MainPresenter {
             BOOKMARKS_SCREEN_FRAGMENT_TAG
     };
 
+    private static final int[] bottomNavigationViewItemsIds = new int[]{
+            R.id.action_all_categories,
+            R.id.action_popular,
+            R.id.action_recommended,
+            R.id.action_bookmarks
+    };
+
     private MainView mainView;
 
     @Override
@@ -41,6 +49,8 @@ public class MainPresenterImpl implements MainPresenter {
     @Override
     public void setStartFragment() {
         setScreenFragment(HOME_SCREEN_FRAGMENT_INDEX);
+
+        getMainView().getBottomNavigationView().setSelectedItemId(getBottomNavigationViewItemsIds()[HOME_SCREEN_FRAGMENT_INDEX]);
     }
 
     @Override
@@ -79,6 +89,10 @@ public class MainPresenterImpl implements MainPresenter {
 
     private static String[] getFragmentsTags() {
         return fragmentsTags;
+    }
+
+    private static int[] getBottomNavigationViewItemsIds() {
+        return bottomNavigationViewItemsIds;
     }
 
     private void testFragmentSet(final int fragmentIndex){

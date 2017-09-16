@@ -51,7 +51,6 @@ public class MainActivity extends BaseActivity implements MainView{
 
         getBottomNavigationToolbar()
                 .setOnNavigationItemSelectedListener(new BottomToolbarActionsListener(getMainPresenter()));
-
     }
 
     @Override
@@ -69,6 +68,12 @@ public class MainActivity extends BaseActivity implements MainView{
     @Override
     public FragmentManager getScreenFragmentManager() {
         return getExistingFragmentManager();
+    }
+
+    @NonNull
+    @Override
+    public BottomNavigationView getBottomNavigationView() {
+        return getBottomNavigationToolbar();
     }
 
     private MainPresenter getMainPresenter() {
