@@ -2,4 +2,9 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <dimen name="design_bottom_navigation_item_max_width" tools:override="true">600dp</dimen>
     <dimen name="design_bottom_navigation_active_item_max_width" tools:override="true">600dp</dimen>
+
+    <dimen name="nav_header_layout_height">198dp</dimen>
+    <dimen name="nav_header_margin_left">24dp</dimen>
+    <dimen name="user_ava_height">80dp</dimen>
+    <dimen name="user_ava_width">80dp</dimen>
 </resources>
