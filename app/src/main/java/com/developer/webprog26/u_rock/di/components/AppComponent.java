@@ -11,6 +11,7 @@ import com.developer.webprog26.u_rock.di.modules.fragments_presenters_modules.Bo
 import com.developer.webprog26.u_rock.di.modules.fragments_presenters_modules.HomeScreenPresenterModule;
 import com.developer.webprog26.u_rock.di.modules.fragments_presenters_modules.PopularScreenPresenterModule;
 import com.developer.webprog26.u_rock.di.modules.fragments_presenters_modules.RecommendedScreenPresenterModule;
+import com.developer.webprog26.u_rock.mvp.impls.MainPresenterImpl;
 
 import dagger.Component;
 
@@ -26,4 +27,6 @@ public interface AppComponent {
     PopularScreenPresenterSubcomponent plus(PopularScreenPresenterModule module);
     RecommendedScreenPresenterSubcomponent plus(RecommendedScreenPresenterModule module);
     BookmarksScreenPresenterSubcomponent plus(BookmarksScreenPresenterModule module);
+
+    void inject(MainPresenterImpl target);
 }

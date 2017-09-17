@@ -3,14 +3,18 @@ package com.developer.webprog26.u_rock.mvp.impls;
 import android.util.Log;
 
 import com.developer.webprog26.u_rock.R;
+import com.developer.webprog26.u_rock.app.URockApplication;
 import com.developer.webprog26.u_rock.fragments.BaseFragment;
 import com.developer.webprog26.u_rock.fragments.BookmarksScreenFragment;
 import com.developer.webprog26.u_rock.fragments.HomeScreenFragment;
 import com.developer.webprog26.u_rock.fragments.PopularScreenFragment;
 import com.developer.webprog26.u_rock.fragments.RecommendedScreenFragment;
 import com.developer.webprog26.u_rock.helpers.FragmentChangeHelper;
+import com.developer.webprog26.u_rock.helpers.interfaces.SharedPreferencesHelper;
 import com.developer.webprog26.u_rock.mvp.interfaces.MainPresenter;
 import com.developer.webprog26.u_rock.mvp.interfaces.MainView;
+
+import javax.inject.Inject;
 
 /**
  * {@link MainPresenter} implementation
@@ -19,6 +23,13 @@ import com.developer.webprog26.u_rock.mvp.interfaces.MainView;
 public class MainPresenterImpl implements MainPresenter {
 
     private static final String TAG = "MainPresenter";
+
+    @Inject
+    SharedPreferencesHelper mSharedPreferencesHelper;
+
+    public MainPresenterImpl() {
+        URockApplication.getAppComponent().inject(this);
+    }
 
     private static final String[] fragmentsTags = new String[]{
             HOME_SCREEN_FRAGMENT_TAG,
@@ -81,6 +92,11 @@ public class MainPresenterImpl implements MainPresenter {
             FragmentChangeHelper.changeFragment(getMainView().getScreenFragmentManager(),
                     getMainView().getContainerResId(), fragment, fragmentTAG);
         }
+    }
+
+    @Override
+    public void onPause() {
+
     }
 
     private MainView getMainView() {
