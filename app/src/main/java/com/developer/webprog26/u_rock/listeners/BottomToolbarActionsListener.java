@@ -11,12 +11,10 @@ import com.developer.webprog26.u_rock.mvp.interfaces.MainPresenter;
  * Created by webprog on 15.09.17.
  */
 
-public class BottomToolbarActionsListener implements BottomNavigationView.OnNavigationItemSelectedListener {
-
-    private final MainPresenter mainPresenter;
+public class BottomToolbarActionsListener extends NavigationActionsListener implements BottomNavigationView.OnNavigationItemSelectedListener {
 
     public BottomToolbarActionsListener(MainPresenter mainPresenter) {
-        this.mainPresenter = mainPresenter;
+        super(mainPresenter);
     }
 
     @Override
@@ -36,9 +34,5 @@ public class BottomToolbarActionsListener implements BottomNavigationView.OnNavi
                 break;
         }
         return true;
-    }
-
-    private MainPresenter getMainPresenter() {
-        return mainPresenter;
     }
 }

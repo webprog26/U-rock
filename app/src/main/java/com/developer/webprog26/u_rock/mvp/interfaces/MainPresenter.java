@@ -38,4 +38,10 @@ public interface MainPresenter {
     void setScreenFragment(final int screenFragmentIndex);
 
     void onPause();
+
+    void closeDrawerLayoutAfterActionPerformed();
+
+    void openSettingsActvity();
+
+    void openFeedbackActivity();
 }

@@ -6,4 +6,11 @@
     <string name="popular">Popular</string>
     <string name="recommended">Recommended</string>
     <string name="bookmarks">Bookmarks</string>
+
+    <!-- Sliding navigation menu items -->
+    <string name="settings">Settings</string>
+    <string name="feedback">Feedback</string>
+
+    <string name="open">Open</string>
+    <string name="close">Close</string>
 </resources>
