@@ -12,8 +12,6 @@ import com.developer.webprog26.u_rock.listeners.BottomToolbarActionsListener;
 import com.developer.webprog26.u_rock.mvp.interfaces.MainPresenter;
 import com.developer.webprog26.u_rock.mvp.interfaces.MainView;
 
-import java.util.ArrayList;
-
 import javax.inject.Inject;
 
 import butterknife.BindView;
@@ -51,6 +49,12 @@ public class MainActivity extends BaseActivity implements MainView{
 
         getBottomNavigationToolbar()
                 .setOnNavigationItemSelectedListener(new BottomToolbarActionsListener(getMainPresenter()));
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+            getMainPresenter().onPause();
     }
 
     @Override
