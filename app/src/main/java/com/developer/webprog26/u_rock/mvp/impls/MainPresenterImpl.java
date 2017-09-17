@@ -1,5 +1,6 @@
 package com.developer.webprog26.u_rock.mvp.impls;
 
+import android.support.v4.view.GravityCompat;
 import android.util.Log;
 
 import com.developer.webprog26.u_rock.R;
@@ -102,6 +103,22 @@ public class MainPresenterImpl implements MainPresenter {
     @Override
     public void onPause() {
         getSharedPreferencesHelper().put(LAST_ACTIVE_FRAGMENT_INDEX_TAG, getActiveFragmentIndexHolder().getActiveFragmentIndex());
+    }
+
+
+    @Override
+    public void closeDrawerLayoutAfterActionPerformed() {
+        getMainView().getDrawerLayout().closeDrawer(GravityCompat.START);
+    }
+
+    @Override
+    public void openSettingsActvity() {
+        Log.i(TAG, "openSettingsActvity");
+    }
+
+    @Override
+    public void openFeedbackActivity() {
+        Log.i(TAG, "openFeedbackActivity");
     }
 
     private MainView getMainView() {
