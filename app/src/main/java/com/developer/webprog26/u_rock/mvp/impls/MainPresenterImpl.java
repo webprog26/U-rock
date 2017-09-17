@@ -11,6 +11,7 @@ import com.developer.webprog26.u_rock.fragments.PopularScreenFragment;
 import com.developer.webprog26.u_rock.fragments.RecommendedScreenFragment;
 import com.developer.webprog26.u_rock.helpers.FragmentChangeHelper;
 import com.developer.webprog26.u_rock.helpers.interfaces.SharedPreferencesHelper;
+import com.developer.webprog26.u_rock.holders.ActiveFragmentIndexHolder;
 import com.developer.webprog26.u_rock.mvp.interfaces.MainPresenter;
 import com.developer.webprog26.u_rock.mvp.interfaces.MainView;
 
@@ -26,6 +27,8 @@ public class MainPresenterImpl implements MainPresenter {
 
     @Inject
     SharedPreferencesHelper mSharedPreferencesHelper;
+
+    private final ActiveFragmentIndexHolder mActiveFragmentIndexHolder = ActiveFragmentIndexHolder.getInstance();
 
     public MainPresenterImpl() {
         URockApplication.getAppComponent().inject(this);
@@ -59,9 +62,10 @@ public class MainPresenterImpl implements MainPresenter {
 
     @Override
     public void setStartFragment() {
-        setScreenFragment(HOME_SCREEN_FRAGMENT_INDEX);
+        int lastActiveFragmentIndex = getSharedPreferencesHelper().get(LAST_ACTIVE_FRAGMENT_INDEX_TAG, 3);
+        setScreenFragment(lastActiveFragmentIndex);
 
-        getMainView().getBottomNavigationView().setSelectedItemId(getBottomNavigationViewItemsIds()[HOME_SCREEN_FRAGMENT_INDEX]);
+        getMainView().getBottomNavigationView().setSelectedItemId(getBottomNavigationViewItemsIds()[lastActiveFragmentIndex]);
     }
 
     @Override
@@ -91,12 +95,13 @@ public class MainPresenterImpl implements MainPresenter {
         if(fragment != null && fragmentTAG != null) {
             FragmentChangeHelper.changeFragment(getMainView().getScreenFragmentManager(),
                     getMainView().getContainerResId(), fragment, fragmentTAG);
+            getActiveFragmentIndexHolder().setActiveFragmentIndex(screenFragmentIndex);
         }
     }
 
     @Override
     public void onPause() {
-
+        getSharedPreferencesHelper().put(LAST_ACTIVE_FRAGMENT_INDEX_TAG, getActiveFragmentIndexHolder().getActiveFragmentIndex());
     }
 
     private MainView getMainView() {
@@ -109,6 +114,14 @@ public class MainPresenterImpl implements MainPresenter {
 
     private static int[] getBottomNavigationViewItemsIds() {
         return bottomNavigationViewItemsIds;
+    }
+
+    private SharedPreferencesHelper getSharedPreferencesHelper() {
+        return mSharedPreferencesHelper;
+    }
+
+    private ActiveFragmentIndexHolder getActiveFragmentIndexHolder() {
+        return mActiveFragmentIndexHolder;
     }
 
     private void testFragmentSet(final int fragmentIndex){
