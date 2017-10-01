@@ -6,15 +6,14 @@ import android.support.annotation.NonNull;
 
 import com.developer.webprog26.u_rock.helpers.interfaces.SharedPreferencesHelper;
 import com.developer.webprog26.u_rock.helpers.interfaces.SharedPreferencesHelperImpl;
+import com.developer.webprog26.u_rock.holders.LastActiveFragmentIndexHolder;
+import com.developer.webprog26.u_rock.holders.LastActiveFragmentIndexHolderImpl;
 
 import javax.inject.Singleton;
 
 import dagger.Module;
 import dagger.Provides;
 
-/**
- * Created by webprog on 11.09.17.
- */
 @Module
 public class AppModule {
 
@@ -41,5 +40,11 @@ public class AppModule {
     @NonNull
     SharedPreferences provideSharedPreferences(){
         return provideAppContext().getSharedPreferences(SharedPreferencesHelper.U_ROCK_SHARED_PREFERENCES_NAME, Context.MODE_PRIVATE);
+    }
+
+    @Provides
+    @NonNull
+    LastActiveFragmentIndexHolder provideLastActiveFragmentIndexHolder(){
+        return new LastActiveFragmentIndexHolderImpl();
     }
 }

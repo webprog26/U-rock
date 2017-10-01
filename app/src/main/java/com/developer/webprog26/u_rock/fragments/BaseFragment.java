@@ -7,7 +7,7 @@ import android.support.v4.app.Fragment;
 import butterknife.Unbinder;
 
 /**
- * Created by webprog on 15.09.17.
+ * Base class for application {@link Fragment} classes
  */
 
 public abstract class BaseFragment extends Fragment {
@@ -33,6 +33,11 @@ public abstract class BaseFragment extends Fragment {
         }
     }
 
+    /**
+     * Initializes {@link Unbinder} instance to break {@link android.view.View} bindings when it has been destroyed
+     * to avoid memory leaks
+     * @param unbinder {@link Unbinder}
+     */
     protected void setUnbinder(Unbinder unbinder) {
         this.unbinder = unbinder;
     }

@@ -12,6 +12,11 @@ import android.support.v4.widget.DrawerLayout;
 
 public interface MainView {
 
+    /**
+     * Returns id of {@link android.support.v4.app.Fragment} container {@link android.view.View}
+     * in main layout
+     * @return int
+     */
     @IdRes
     int getContainerResId();
 

@@ -14,7 +14,7 @@ import com.developer.webprog26.u_rock.mvp.interfaces.fragments_views.BookmarksSc
 import butterknife.ButterKnife;
 
 /**
- * Created by webprog on 15.09.17.
+ * This {@link android.support.v4.app.Fragment} works with bookmarks
  */
 
 public class BookmarksScreenFragment extends BaseFragment implements BookmarksScreenView{

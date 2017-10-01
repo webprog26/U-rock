@@ -6,7 +6,7 @@ import javax.inject.Inject;
 import javax.inject.Singleton;
 
 /**
- * Created by webprog on 17.09.17.
+ * Class-wrapper for {@link SharedPreferences}
  */
 @Singleton
 public class SharedPreferencesHelperImpl implements SharedPreferencesHelper {

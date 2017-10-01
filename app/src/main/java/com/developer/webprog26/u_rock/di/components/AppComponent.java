@@ -16,7 +16,7 @@ import com.developer.webprog26.u_rock.mvp.impls.MainPresenterImpl;
 import dagger.Component;
 
 /**
- * Created by webprog on 11.09.17.
+ * This interface declares methods for dependencies injections
  */
 @Component(modules = {AppModule.class})
 public interface AppComponent {
