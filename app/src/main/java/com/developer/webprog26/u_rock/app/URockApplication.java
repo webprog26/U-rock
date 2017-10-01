@@ -6,10 +6,6 @@ import com.developer.webprog26.u_rock.di.components.AppComponent;
 import com.developer.webprog26.u_rock.di.components.DaggerAppComponent;
 import com.developer.webprog26.u_rock.di.modules.AppModule;
 
-/**
- * Created by webprog on 11.09.17.
- */
-
 public class URockApplication extends Application {
 
     private static AppComponent mAppComponent;

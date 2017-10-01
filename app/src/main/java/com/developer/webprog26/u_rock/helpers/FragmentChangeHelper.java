@@ -7,11 +7,18 @@ import android.support.v4.app.FragmentManager;
 import com.developer.webprog26.u_rock.fragments.BaseFragment;
 
 /**
- * Created by webprog on 16.09.17.
+ * Manages every {@link android.support.v4.app.Fragment} transaction started by clicking bottom toolbar item
  */
 
 public class FragmentChangeHelper {
 
+    /**
+     * Makes {@link android.support.v4.app.FragmentTransaction}
+     * @param fragmentManager {@link FragmentManager}
+     * @param containerResId int
+     * @param fragment {@link android.support.v4.app.Fragment}a
+     * @param fragmentTag {@link String}
+     */
     public static void changeFragment(@NonNull final FragmentManager fragmentManager,
                                       @IdRes final int containerResId,
                                       @NonNull final BaseFragment fragment,
