@@ -12,7 +12,7 @@ import com.developer.webprog26.u_rock.fragments.PopularScreenFragment;
 import com.developer.webprog26.u_rock.fragments.RecommendedScreenFragment;
 import com.developer.webprog26.u_rock.helpers.FragmentChangeHelper;
 import com.developer.webprog26.u_rock.helpers.interfaces.SharedPreferencesHelper;
-import com.developer.webprog26.u_rock.holders.ActiveFragmentIndexHolder;
+import com.developer.webprog26.u_rock.holders.LastActiveFragmentIndexHolder;
 import com.developer.webprog26.u_rock.mvp.interfaces.MainPresenter;
 import com.developer.webprog26.u_rock.mvp.interfaces.MainView;
 
@@ -29,7 +29,8 @@ public class MainPresenterImpl implements MainPresenter {
     @Inject
     SharedPreferencesHelper mSharedPreferencesHelper;
 
-    private final ActiveFragmentIndexHolder mActiveFragmentIndexHolder = ActiveFragmentIndexHolder.getInstance();
+    @Inject
+    LastActiveFragmentIndexHolder mLastActiveFragmentIndexHolder;
 
     public MainPresenterImpl() {
         URockApplication.getAppComponent().inject(this);
@@ -63,7 +64,7 @@ public class MainPresenterImpl implements MainPresenter {
 
     @Override
     public void setStartFragment() {
-        int lastActiveFragmentIndex = getSharedPreferencesHelper().get(LAST_ACTIVE_FRAGMENT_INDEX_TAG, 3);
+        int lastActiveFragmentIndex = getSharedPreferencesHelper().get(LastActiveFragmentIndexHolder.LAST_ACTIVE_FRAGMENT_INDEX_TAG, 3);
         setScreenFragment(lastActiveFragmentIndex);
 
         getMainView().getBottomNavigationView().setSelectedItemId(getBottomNavigationViewItemsIds()[lastActiveFragmentIndex]);
@@ -96,13 +97,13 @@ public class MainPresenterImpl implements MainPresenter {
         if(fragment != null && fragmentTAG != null) {
             FragmentChangeHelper.changeFragment(getMainView().getScreenFragmentManager(),
                     getMainView().getContainerResId(), fragment, fragmentTAG);
-            getActiveFragmentIndexHolder().setActiveFragmentIndex(screenFragmentIndex);
+            getLastActiveFragmentIndexHolder().saveLastActiveFragmentIndex(screenFragmentIndex);
         }
     }
 
     @Override
     public void onPause() {
-        getSharedPreferencesHelper().put(LAST_ACTIVE_FRAGMENT_INDEX_TAG, getActiveFragmentIndexHolder().getActiveFragmentIndex());
+        getSharedPreferencesHelper().put(LastActiveFragmentIndexHolder.LAST_ACTIVE_FRAGMENT_INDEX_TAG, getLastActiveFragmentIndexHolder().getLastActiveFragmentIndex());
     }
 
 
@@ -137,8 +138,8 @@ public class MainPresenterImpl implements MainPresenter {
         return mSharedPreferencesHelper;
     }
 
-    private ActiveFragmentIndexHolder getActiveFragmentIndexHolder() {
-        return mActiveFragmentIndexHolder;
+    private LastActiveFragmentIndexHolder getLastActiveFragmentIndexHolder() {
+        return mLastActiveFragmentIndexHolder;
     }
 
     private void testFragmentSet(final int fragmentIndex){

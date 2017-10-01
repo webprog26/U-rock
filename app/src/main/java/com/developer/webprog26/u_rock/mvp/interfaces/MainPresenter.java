@@ -16,8 +16,6 @@ public interface MainPresenter {
     String RECOMMENDED_SCREEN_FRAGMENT_TAG = "recommended_screen_fragment_tag";
     String BOOKMARKS_SCREEN_FRAGMENT_TAG = "bookmarks_screen_fragment_tag";
 
-    String LAST_ACTIVE_FRAGMENT_INDEX_TAG = "saved_fragment_index_tag";
-
     /**
      * Sets {@link MainView} to interact with
      * @param mainView {@link MainView}

@@ -6,9 +6,6 @@ import com.developer.webprog26.u_rock.fragments.PopularScreenFragment;
 
 import dagger.Subcomponent;
 
-/**
- * Created by webprog on 15.09.17.
- */
 @Subcomponent(modules = {PopularScreenPresenterModule.class})
 @FragmentScope
 public interface PopularScreenPresenterSubcomponent {

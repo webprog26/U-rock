@@ -16,10 +16,9 @@ import java.util.ArrayList;
 import javax.inject.Inject;
 
 import butterknife.ButterKnife;
-import butterknife.Unbinder;
 
 /**
- * Created by webprog on 15.09.17.
+ * This {@link android.support.v4.app.Fragment} is application main screen
  */
 
 public class HomeScreenFragment extends BaseFragment implements HomeScreenView{

@@ -76,18 +76,7 @@ public class MainActivity extends BaseActivity implements MainView{
         getBottomNavigationToolbar()
                 .setOnNavigationItemSelectedListener(new BottomToolbarActionsListener(getMainPresenter()));
 
-        final Toolbar toolbar = getToolbar();
-
-        if(toolbar != null) {
-            setSupportActionBar(toolbar);
-
-            toggle = new ActionBarDrawerToggle(this, getDlSlidingNavigation(), toolbar, R.string.open, R.string.close);
-            getDlSlidingNavigation().addDrawerListener(toggle);
-
-            final ActionBar actionBar = getSupportActionBar();
-            actionBar.setDisplayHomeAsUpEnabled(true);
-            actionBar.setDisplayShowTitleEnabled(false);
-        }
+        initToolbar();
     }
 
     @Override
@@ -150,6 +139,24 @@ public class MainActivity extends BaseActivity implements MainView{
         URockApplication.getAppComponent().plus(new MainPresenterModule()).inject(this);
     }
 
+    private void initToolbar(){
+        final Toolbar toolbar = getToolbar();
+
+        if(toolbar != null) {
+            setSupportActionBar(toolbar);
+
+            toggle = new ActionBarDrawerToggle(this, getDlSlidingNavigation(), toolbar, R.string.open, R.string.close);
+            getDlSlidingNavigation().addDrawerListener(toggle);
+
+            final ActionBar actionBar = getSupportActionBar();
+
+            if(actionBar != null) {
+                actionBar.setDisplayHomeAsUpEnabled(true);
+                actionBar.setDisplayShowTitleEnabled(false);
+            }
+        }
+    }
+
     @Override
     public int getContainerResId() {
         return CONTAINER_RES_ID;
@@ -194,7 +201,7 @@ public class MainActivity extends BaseActivity implements MainView{
         return toggle;
     }
 
-    public NavigationView getSlidingNavigationView() {
+    private NavigationView getSlidingNavigationView() {
         return mNavigationView;
     }
 

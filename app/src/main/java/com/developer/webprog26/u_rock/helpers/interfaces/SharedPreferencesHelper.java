@@ -1,7 +1,7 @@
 package com.developer.webprog26.u_rock.helpers.interfaces;
 
 /**
- * Created by webprog on 17.09.17.
+ * Interface, which should be implemented for class-wrapper for {@link android.content.SharedPreferences}
  */
 
 public interface SharedPreferencesHelper {

@@ -9,10 +9,6 @@ import com.developer.webprog26.u_rock.mvp.interfaces.fragments_presenters.HomeSc
 import dagger.Module;
 import dagger.Provides;
 
-/**
- * Created by webprog on 15.09.17.
- */
-
 @Module
 public class HomeScreenPresenterModule {
 

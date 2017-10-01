@@ -14,7 +14,7 @@ import com.developer.webprog26.u_rock.mvp.interfaces.fragments_views.PopularScre
 import butterknife.ButterKnife;
 
 /**
- * Created by webprog on 15.09.17.
+ * This {@link android.support.v4.app.Fragment} works with popular articles and categories
  */
 
 public class PopularScreenFragment extends BaseFragment implements PopularScreenView {
