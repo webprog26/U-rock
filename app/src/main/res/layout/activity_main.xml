@@ -8,33 +8,18 @@
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
     app:insetForeground="@color/colorPrimary">
-<RelativeLayout
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context="com.developer.webprog26.u_rock.MainActivity">
 
-    <FrameLayout
-        android:id="@+id/fl_container"
+    <android.support.design.widget.CoordinatorLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_above="@+id/bottom_navigation">
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/app_name"/>
-    </FrameLayout>
+        android:fitsSystemWindows="true"
+        tools:context=".MainActivity">
 
-    <android.support.design.widget.BottomNavigationView
-        android:id="@+id/bottom_navigation"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:background="@color/colorPrimary"
-        app:itemIconTint="@drawable/bottom_navigation_selector"
-        app:itemTextColor="@drawable/bottom_navigation_selector"
-        app:menu="@menu/bottom_navigation_main"/>
+        <include layout="@layout/app_bar"/>
 
-</RelativeLayout>
+        <include layout="@layout/content_main"/>
+
+    </android.support.design.widget.CoordinatorLayout>
 
     <android.support.design.widget.NavigationView
         android:id="@+id/nav_view"
