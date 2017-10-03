@@ -13,7 +13,6 @@ import android.support.v4.widget.DrawerLayout;
 
 public interface MainView extends BaseView{
 
-
     @NonNull
     FragmentManager getScreenFragmentManager();
 
