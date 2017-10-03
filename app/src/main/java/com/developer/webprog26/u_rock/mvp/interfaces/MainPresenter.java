@@ -1,5 +1,7 @@
 package com.developer.webprog26.u_rock.mvp.interfaces;
 
+import android.content.Intent;
+
 /**
  * Manages app main screen actions
  */
@@ -39,7 +41,7 @@ public interface MainPresenter {
 
     void closeDrawerLayoutAfterActionPerformed();
 
-    void openSettingsActvity();
+    void openSettingsActivity(final Intent intent);
 
     void openFeedbackActivity();
 }

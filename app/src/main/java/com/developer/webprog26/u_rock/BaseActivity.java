@@ -1,6 +1,7 @@
 package com.developer.webprog26.u_rock;
 
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 
@@ -13,6 +14,8 @@ public abstract class BaseActivity extends AppCompatActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        PreferenceManager.setDefaultValues(this,R.xml.preferences, false);
 
         setupActivityComponent();
     }
