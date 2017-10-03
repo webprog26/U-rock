@@ -65,7 +65,7 @@ public class MainPresenterImpl implements MainPresenter {
     }
 
     @Override
-    public void setStartFragment() {
+
         final int lastActiveFragmentIndex = getSharedPreferencesHelper()
                 .get(LastActiveFragmentIndexHolder.LAST_ACTIVE_FRAGMENT_INDEX_TAG, 0);
 
@@ -73,6 +73,7 @@ public class MainPresenterImpl implements MainPresenter {
 
         getMainView().getBottomNavigationView()
                 .setSelectedItemId(getBottomNavigationViewItemsIds()[lastActiveFragmentIndex]);
+
     }
 
     @Override
@@ -111,7 +112,6 @@ public class MainPresenterImpl implements MainPresenter {
 
     @Override
     public void onPause() {
-
         final int lastActiveFragmentIndex = shouldSaveLastActiveFragment() ? getLastActiveFragmentIndexHolder()
                 .getLastActiveFragmentIndex() : 0;
 
