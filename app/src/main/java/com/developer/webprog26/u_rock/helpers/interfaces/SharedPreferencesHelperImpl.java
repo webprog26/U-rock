@@ -1,7 +1,6 @@
 package com.developer.webprog26.u_rock.helpers.interfaces;
 
 import android.content.SharedPreferences;
-
 import javax.inject.Inject;
 import javax.inject.Singleton;
 

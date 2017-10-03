@@ -65,11 +65,15 @@ public class MainPresenterImpl implements MainPresenter {
     }
 
     @Override
-    public void setStartFragment() {
-        int lastActiveFragmentIndex = getSharedPreferencesHelper().get(LastActiveFragmentIndexHolder.LAST_ACTIVE_FRAGMENT_INDEX_TAG, 0);
-      
+
+        final int lastActiveFragmentIndex = getSharedPreferencesHelper()
+                .get(LastActiveFragmentIndexHolder.LAST_ACTIVE_FRAGMENT_INDEX_TAG, 0);
+
         setScreenFragment(lastActiveFragmentIndex);
-        getMainView().getBottomNavigationView().setSelectedItemId(getBottomNavigationViewItemsIds()[lastActiveFragmentIndex]);
+
+        getMainView().getBottomNavigationView()
+                .setSelectedItemId(getBottomNavigationViewItemsIds()[lastActiveFragmentIndex]);
+
     }
 
     @Override
@@ -101,14 +105,15 @@ public class MainPresenterImpl implements MainPresenter {
                     getMainView().getContainerResId(), fragment, fragmentTAG);
 
 
-            getLastActiveFragmentIndexHolder().saveLastActiveFragmentIndex(shouldSaveLastActiveFragment() ? screenFragmentIndex : 0);
+            getLastActiveFragmentIndexHolder().saveLastActiveFragmentIndex(shouldSaveLastActiveFragment()
+                    ? screenFragmentIndex : 0);
         }
     }
 
     @Override
     public void onPause() {
-
-        final int lastActiveFragmentIndex = shouldSaveLastActiveFragment() ? getLastActiveFragmentIndexHolder().getLastActiveFragmentIndex() : 0;
+        final int lastActiveFragmentIndex = shouldSaveLastActiveFragment() ? getLastActiveFragmentIndexHolder()
+                .getLastActiveFragmentIndex() : 0;
 
         getSharedPreferencesHelper().put(LastActiveFragmentIndexHolder.LAST_ACTIVE_FRAGMENT_INDEX_TAG,
                 lastActiveFragmentIndex);

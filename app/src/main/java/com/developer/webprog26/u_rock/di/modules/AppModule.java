@@ -2,6 +2,7 @@ package com.developer.webprog26.u_rock.di.modules;
 
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.preference.PreferenceManager;
 import android.support.annotation.NonNull;
 
 import com.developer.webprog26.u_rock.helpers.interfaces.SharedPreferencesHelper;
@@ -39,7 +40,7 @@ public class AppModule {
     @Provides
     @NonNull
     SharedPreferences provideSharedPreferences(){
-        return provideAppContext().getSharedPreferences(SharedPreferencesHelper.U_ROCK_SHARED_PREFERENCES_NAME, Context.MODE_PRIVATE);
+        return PreferenceManager.getDefaultSharedPreferences(provideAppContext());
     }
 
     @Provides
