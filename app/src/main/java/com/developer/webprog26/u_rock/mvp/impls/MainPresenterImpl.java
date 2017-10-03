@@ -1,5 +1,6 @@
 package com.developer.webprog26.u_rock.mvp.impls;
 
+import android.content.Intent;
 import android.support.v4.view.GravityCompat;
 import android.util.Log;
 
@@ -15,6 +16,7 @@ import com.developer.webprog26.u_rock.helpers.interfaces.SharedPreferencesHelper
 import com.developer.webprog26.u_rock.holders.LastActiveFragmentIndexHolder;
 import com.developer.webprog26.u_rock.mvp.interfaces.MainPresenter;
 import com.developer.webprog26.u_rock.mvp.interfaces.MainView;
+import com.developer.webprog26.u_rock.mvp.interfaces.fragments_presenters.SettingsFragmentPresenter;
 
 import javax.inject.Inject;
 
@@ -64,7 +66,8 @@ public class MainPresenterImpl implements MainPresenter {
 
     @Override
     public void setStartFragment() {
-        int lastActiveFragmentIndex = getSharedPreferencesHelper().get(LastActiveFragmentIndexHolder.LAST_ACTIVE_FRAGMENT_INDEX_TAG, 3);
+        int lastActiveFragmentIndex = getSharedPreferencesHelper().get(LastActiveFragmentIndexHolder.LAST_ACTIVE_FRAGMENT_INDEX_TAG, 0);
+
         setScreenFragment(lastActiveFragmentIndex);
 
         getMainView().getBottomNavigationView().setSelectedItemId(getBottomNavigationViewItemsIds()[lastActiveFragmentIndex]);
@@ -97,13 +100,17 @@ public class MainPresenterImpl implements MainPresenter {
         if(fragment != null && fragmentTAG != null) {
             FragmentChangeHelper.changeFragment(getMainView().getScreenFragmentManager(),
                     getMainView().getContainerResId(), fragment, fragmentTAG);
-            getLastActiveFragmentIndexHolder().saveLastActiveFragmentIndex(screenFragmentIndex);
+
+
+            getLastActiveFragmentIndexHolder().saveLastActiveFragmentIndex(shouldSaveLastActiveFragment() ? screenFragmentIndex : 0);
         }
     }
 
     @Override
     public void onPause() {
-        getSharedPreferencesHelper().put(LastActiveFragmentIndexHolder.LAST_ACTIVE_FRAGMENT_INDEX_TAG, getLastActiveFragmentIndexHolder().getLastActiveFragmentIndex());
+        getSharedPreferencesHelper().put(LastActiveFragmentIndexHolder.LAST_ACTIVE_FRAGMENT_INDEX_TAG,
+                shouldSaveLastActiveFragment() ? getLastActiveFragmentIndexHolder().getLastActiveFragmentIndex() : 0);
+
     }
 
 
@@ -113,8 +120,9 @@ public class MainPresenterImpl implements MainPresenter {
     }
 
     @Override
-    public void openSettingsActvity() {
-        Log.i(TAG, "openSettingsActvity");
+    public void openSettingsActivity(final Intent intent) {
+        Log.i(TAG, "openSettingsActivity");
+        getMainView().openActivity(intent);
     }
 
     @Override
@@ -159,5 +167,9 @@ public class MainPresenterImpl implements MainPresenter {
             default:
                 Log.i(TAG, "Something went wrong with setting fragment");
         }
+    }
+
+    private boolean shouldSaveLastActiveFragment(){
+        return getSharedPreferencesHelper().get(SettingsFragmentPresenter.REMEMBER_LAST_ACTIVE_CATEGORY_PREFERENCE_KEY, true);
     }
 }

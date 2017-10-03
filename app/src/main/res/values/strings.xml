@@ -16,4 +16,11 @@
 
     <string name="search">Search</string>
     <string name="search_hint">Type you search</string>
+
+    <!-- App preferences -->
+    <string name="settings_label">Settings</string>
+
+    <string name="remember_last_active_category_title">Remember last active category</string>
+    <string name="remember_last_active_category_summary">App will start from the last active category</string>
+
 </resources>

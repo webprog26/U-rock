@@ -5,6 +5,7 @@ import android.support.design.widget.NavigationView;
 import android.view.MenuItem;
 
 import com.developer.webprog26.u_rock.R;
+import com.developer.webprog26.u_rock.holders.MainViewIntentsHolder;
 import com.developer.webprog26.u_rock.mvp.interfaces.MainPresenter;
 
 /**
@@ -13,8 +14,11 @@ import com.developer.webprog26.u_rock.mvp.interfaces.MainPresenter;
 
 public class SlidingNavigationActionsListener extends NavigationActionsListener implements NavigationView.OnNavigationItemSelectedListener {
 
-    public SlidingNavigationActionsListener(MainPresenter mainPresenter) {
+    private final MainViewIntentsHolder mainViewIntentsHolder;
+
+    public SlidingNavigationActionsListener(MainPresenter mainPresenter, MainViewIntentsHolder mainViewIntentsHolder) {
         super(mainPresenter);
+        this.mainViewIntentsHolder = mainViewIntentsHolder;
     }
 
     @Override
@@ -22,7 +26,7 @@ public class SlidingNavigationActionsListener extends NavigationActionsListener 
 
         switch (item.getItemId()){
             case R.id.nav_action_settings:
-                getMainPresenter().openSettingsActvity();
+                getMainPresenter().openSettingsActivity(getMainViewIntentsHolder().getSettingsActivityIntent());
                 break;
             case R.id.nav_action_feedback:
                 getMainPresenter().openFeedbackActivity();
@@ -31,5 +35,9 @@ public class SlidingNavigationActionsListener extends NavigationActionsListener 
 
         getMainPresenter().closeDrawerLayoutAfterActionPerformed();
         return true;
+    }
+
+    public MainViewIntentsHolder getMainViewIntentsHolder() {
+        return mainViewIntentsHolder;
     }
 }
