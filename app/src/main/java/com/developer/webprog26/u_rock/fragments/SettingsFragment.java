@@ -44,7 +44,8 @@ public class SettingsFragment extends PreferenceFragment implements SettingsView
 
         switch (key) {
             case SettingsFragmentPresenter.REMEMBER_LAST_ACTIVE_CATEGORY_PREFERENCE_KEY:
-                settingsFragmentPresenter.handleRememberLastActiveCategoryPreferenceState(sharedPreferences.getBoolean(key, false));
+                settingsFragmentPresenter
+                        .handleRememberLastActiveCategoryPreferenceState(sharedPreferences.getBoolean(key, false));
 
                 break;
         }
