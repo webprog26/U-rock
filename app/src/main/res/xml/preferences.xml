@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+    <SwitchPreference
+        android:key="pref_remember_last_active_category"
+        android:title="@string/remember_last_active_category_title"
+        android:summary="@string/remember_last_active_category_summary"
+        android:defaultValue="false"/>
+</PreferenceScreen>

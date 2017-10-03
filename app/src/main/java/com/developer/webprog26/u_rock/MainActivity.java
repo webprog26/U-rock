@@ -1,5 +1,6 @@
 package com.developer.webprog26.u_rock;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.IdRes;
 import android.support.annotation.NonNull;
@@ -20,6 +21,9 @@ import android.view.MenuItem;
 
 import com.developer.webprog26.u_rock.app.URockApplication;
 import com.developer.webprog26.u_rock.di.modules.MainPresenterModule;
+import com.developer.webprog26.u_rock.factories.IntentFactory;
+import com.developer.webprog26.u_rock.holders.MainViewIntentsHolder;
+import com.developer.webprog26.u_rock.holders.MainViewIntentsHolderImpl;
 import com.developer.webprog26.u_rock.listeners.BottomToolbarActionsListener;
 import com.developer.webprog26.u_rock.listeners.SlidingNavigationActionsListener;
 import com.developer.webprog26.u_rock.mvp.interfaces.MainPresenter;
@@ -39,6 +43,11 @@ public class MainActivity extends BaseActivity implements MainView{
 
     @Inject
     MainPresenter mainPresenter;
+
+    @Inject
+    IntentFactory mainViewIntentFactory;
+
+    private MainViewIntentsHolder mainViewIntentsHolder;
 
     private FragmentManager mExistingFragmentManager;
     private ActionBarDrawerToggle toggle;
@@ -61,6 +70,11 @@ public class MainActivity extends BaseActivity implements MainView{
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
 
+        final IntentFactory mainViewIntentFactory = getMainViewIntentFactory();
+
+        //Todo replace second argument with feeadbackActivityIntent
+        mainViewIntentsHolder = new MainViewIntentsHolderImpl(mainViewIntentFactory.createIntent(getApplicationContext(), PreferencesActivity.class), null);
+
         mExistingFragmentManager = getSupportFragmentManager();
 
         final MainPresenter mainPresenter = getMainPresenter();
@@ -71,7 +85,7 @@ public class MainActivity extends BaseActivity implements MainView{
             mainPresenter.setStartFragment();
         }
 
-        getSlidingNavigationView().setNavigationItemSelectedListener(new SlidingNavigationActionsListener(getMainPresenter()));
+        getSlidingNavigationView().setNavigationItemSelectedListener(new SlidingNavigationActionsListener(getMainPresenter(), getMainViewIntentsHolder()));
 
         getBottomNavigationToolbar()
                 .setOnNavigationItemSelectedListener(new BottomToolbarActionsListener(getMainPresenter()));
@@ -175,6 +189,13 @@ public class MainActivity extends BaseActivity implements MainView{
         return getBottomNavigationToolbar();
     }
 
+    @Override
+    public void openActivity(Intent intent) {
+        if(intent != null) {
+            startActivity(intent);
+        }
+    }
+
     @NonNull
     @Override
     public DrawerLayout getDrawerLayout() {
@@ -207,5 +228,13 @@ public class MainActivity extends BaseActivity implements MainView{
 
     private Toolbar getToolbar() {
         return mToolbar;
+    }
+
+    private IntentFactory getMainViewIntentFactory() {
+        return mainViewIntentFactory;
+    }
+
+    private MainViewIntentsHolder getMainViewIntentsHolder() {
+        return mainViewIntentsHolder;
     }
 }
