@@ -67,9 +67,8 @@ public class MainPresenterImpl implements MainPresenter {
     @Override
     public void setStartFragment() {
         int lastActiveFragmentIndex = getSharedPreferencesHelper().get(LastActiveFragmentIndexHolder.LAST_ACTIVE_FRAGMENT_INDEX_TAG, 0);
-
+      
         setScreenFragment(lastActiveFragmentIndex);
-
         getMainView().getBottomNavigationView().setSelectedItemId(getBottomNavigationViewItemsIds()[lastActiveFragmentIndex]);
     }
 
@@ -108,8 +107,11 @@ public class MainPresenterImpl implements MainPresenter {
 
     @Override
     public void onPause() {
+
+        final int lastActiveFragmentIndex = shouldSaveLastActiveFragment() ? getLastActiveFragmentIndexHolder().getLastActiveFragmentIndex() : 0;
+
         getSharedPreferencesHelper().put(LastActiveFragmentIndexHolder.LAST_ACTIVE_FRAGMENT_INDEX_TAG,
-                shouldSaveLastActiveFragment() ? getLastActiveFragmentIndexHolder().getLastActiveFragmentIndex() : 0);
+                lastActiveFragmentIndex);
 
     }
 
@@ -150,7 +152,7 @@ public class MainPresenterImpl implements MainPresenter {
         return mLastActiveFragmentIndexHolder;
     }
 
-    private void testFragmentSet(final int fragmentIndex){
+    private void testFragmentSet(final int fragmentIndex) {
         switch (fragmentIndex){
             case HOME_SCREEN_FRAGMENT_INDEX:
                 Log.i(TAG, "Setting Home fragment");
@@ -170,6 +172,6 @@ public class MainPresenterImpl implements MainPresenter {
     }
 
     private boolean shouldSaveLastActiveFragment(){
-        return getSharedPreferencesHelper().get(SettingsFragmentPresenter.REMEMBER_LAST_ACTIVE_CATEGORY_PREFERENCE_KEY, true);
+        return getSharedPreferencesHelper().get(SettingsFragmentPresenter.REMEMBER_LAST_ACTIVE_CATEGORY_PREFERENCE_KEY, false);
     }
 }
