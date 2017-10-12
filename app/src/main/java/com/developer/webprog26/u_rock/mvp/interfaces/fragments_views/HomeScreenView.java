@@ -1,6 +1,6 @@
 package com.developer.webprog26.u_rock.mvp.interfaces.fragments_views;
 
-import com.developer.webprog26.u_rock.Article;
+import com.developer.webprog26.u_rock.pojo.Article;
 
 import java.util.ArrayList;
 

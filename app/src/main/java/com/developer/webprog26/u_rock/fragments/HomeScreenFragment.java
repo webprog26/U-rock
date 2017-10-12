@@ -6,7 +6,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.developer.webprog26.u_rock.Article;
+import com.developer.webprog26.u_rock.pojo.Article;
 import com.developer.webprog26.u_rock.R;
 import com.developer.webprog26.u_rock.app.URockApplication;
 import com.developer.webprog26.u_rock.di.modules.fragments_presenters_modules.HomeScreenPresenterModule;
