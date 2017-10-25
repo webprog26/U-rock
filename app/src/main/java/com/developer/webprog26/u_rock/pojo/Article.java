@@ -9,21 +9,27 @@ public class Article {
     private long articleId;
     private String articleTitle;
     private int articleCategoryId;
+    private long articleServerId;
     private String articleMainImageUrl;
+    private String articleText;
     private String articleAuthor;
     private String dateArticlePublished;
     private boolean isArticleFavourite;
 
     public Article(long articleId,
                    String articleTitle,
+                   String articleText,
                    int articleCategoryId,
+                   long articleServerId,
                    String articleMainImageUrl,
                    String articleAuthor,
                    String dateArticlePublished,
                    boolean isArticleFavourite) {
         this.articleId = articleId;
         this.articleTitle = articleTitle;
+        this.articleText = articleText;
         this.articleCategoryId = articleCategoryId;
+        this.articleServerId = articleServerId;
         this.articleMainImageUrl = articleMainImageUrl;
         this.articleAuthor = articleAuthor;
         this.dateArticlePublished = dateArticlePublished;
@@ -46,12 +52,28 @@ public class Article {
         this.articleTitle = articleTitle;
     }
 
+    public String getArticleText() {
+        return articleText;
+    }
+
+    public void setArticleText(String articleText) {
+        this.articleText = articleText;
+    }
+
     public int getArticleCategoryId() {
         return articleCategoryId;
     }
 
     public void setArticleCategoryId(int articleCategoryId) {
         this.articleCategoryId = articleCategoryId;
+    }
+
+    public long getArticleServerId() {
+        return articleServerId;
+    }
+
+    public void setArticleServerId(long articleServerId) {
+        this.articleServerId = articleServerId;
     }
 
     public String getArticleMainImageUrl() {

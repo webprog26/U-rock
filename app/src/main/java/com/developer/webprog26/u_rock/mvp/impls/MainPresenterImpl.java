@@ -6,6 +6,7 @@ import android.util.Log;
 
 import com.developer.webprog26.u_rock.R;
 import com.developer.webprog26.u_rock.app.URockApplication;
+import com.developer.webprog26.u_rock.data_loading.DataRepository;
 import com.developer.webprog26.u_rock.fragments.BaseFragment;
 import com.developer.webprog26.u_rock.fragments.BookmarksScreenFragment;
 import com.developer.webprog26.u_rock.fragments.HomeScreenFragment;
@@ -33,6 +34,9 @@ public class MainPresenterImpl implements MainPresenter {
 
     @Inject
     LastActiveFragmentIndexHolder mLastActiveFragmentIndexHolder;
+
+    @Inject
+    DataRepository mDataRepository;
 
     public MainPresenterImpl() {
         URockApplication.getAppComponent().inject(this);
@@ -178,5 +182,14 @@ public class MainPresenterImpl implements MainPresenter {
 
     private boolean shouldSaveLastActiveFragment(){
         return getSharedPreferencesHelper().get(SettingsFragmentPresenter.REMEMBER_LAST_ACTIVE_CATEGORY_PREFERENCE_KEY, false);
+    }
+
+    private DataRepository getDataRepository() {
+        return mDataRepository;
+    }
+
+    @Override
+    public void loadArticlesDataWithDataRepository() {
+        getDataRepository().getArticlesData();
     }
 }
