@@ -32,6 +32,11 @@ public class SettingsFragmentPresenterImpl implements SettingsFragmentPresenter 
         getSharedPreferencesHelper().put(REMEMBER_LAST_ACTIVE_CATEGORY_PREFERENCE_KEY, preferenceState);
     }
 
+    @Override
+    public void detach() {
+        this.settingsView = null;
+    }
+
     private SettingsView getSettingsView() {
         return settingsView;
     }

@@ -24,6 +24,11 @@ public class PreferencesPresenterImpl implements PreferencesPresenter {
                 getPreferencesView().getContainerResId(), new SettingsFragment(), SETTINGS_FRAGMENT_TAG);
     }
 
+    @Override
+    public void detach() {
+        this.preferencesView = null;
+    }
+
     private PreferencesView getPreferencesView() {
         return preferencesView;
     }

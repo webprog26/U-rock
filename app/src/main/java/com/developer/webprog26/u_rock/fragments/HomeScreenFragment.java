@@ -80,6 +80,12 @@ public class HomeScreenFragment extends BaseFragment implements HomeScreenView, 
     }
 
     @Override
+    public void onDestroy() {
+        getHomeScreenPresenter().detach();
+        super.onDestroy();
+    }
+
+    @Override
     protected void setupFragmentComponent() {
         URockApplication.getAppComponent().plus(new HomeScreenPresenterModule()).inject(this);
     }

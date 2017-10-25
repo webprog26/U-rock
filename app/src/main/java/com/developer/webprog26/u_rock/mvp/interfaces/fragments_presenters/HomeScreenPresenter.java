@@ -26,4 +26,6 @@ public interface HomeScreenPresenter {
     void notifyMainViewToSetNewCommentsMessage(final int newCommentsNumber);
 
     void onStart();
+
+    void detach();
 }

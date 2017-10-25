@@ -41,6 +41,11 @@ public class HomeScreenPresenterImpl implements HomeScreenPresenter {
 
     }
 
+    @Override
+    public void detach() {
+        this.homeScreenView = null;
+    }
+
     private HomeScreenView getHomeScreenView() {
         return homeScreenView;
     }

@@ -38,6 +38,12 @@ public class SettingsFragment extends PreferenceFragment implements SettingsView
     }
 
     @Override
+    public void onDestroy() {
+        getSettingsFragmentPresenter().detach();
+        super.onDestroy();
+    }
+
+    @Override
     public void onSharedPreferenceChanged(SharedPreferences sharedPreferences, String key) {
 
         final SettingsFragmentPresenter settingsFragmentPresenter = getSettingsFragmentPresenter();

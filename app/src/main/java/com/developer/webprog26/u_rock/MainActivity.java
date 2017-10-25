@@ -101,6 +101,12 @@ public class MainActivity extends BaseActivity implements MainView, OnArticlesLi
     }
 
     @Override
+    protected void onDestroy() {
+        getMainPresenter().detach();
+        super.onDestroy();
+    }
+
+    @Override
     protected void onPause() {
         super.onPause();
             getMainPresenter().onPause();
