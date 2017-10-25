@@ -28,13 +28,14 @@ import com.developer.webprog26.u_rock.listeners.BottomToolbarActionsListener;
 import com.developer.webprog26.u_rock.listeners.SlidingNavigationActionsListener;
 import com.developer.webprog26.u_rock.mvp.interfaces.MainPresenter;
 import com.developer.webprog26.u_rock.mvp.interfaces.MainView;
+import com.developer.webprog26.u_rock.mvp.interfaces.OnArticlesListShouldBeUpdatedCallback;
 
 import javax.inject.Inject;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-public class MainActivity extends BaseActivity implements MainView{
+public class MainActivity extends BaseActivity implements MainView, OnArticlesListShouldBeUpdatedCallback{
 
     private static final String TAG = "MainView";
 
@@ -194,6 +195,11 @@ public class MainActivity extends BaseActivity implements MainView{
         if(intent != null) {
             startActivity(intent);
         }
+    }
+
+    @Override
+    public void onArticlesListShouldBeUpdated() {
+        getMainPresenter().loadArticlesDataWithDataRepository();
     }
 
     @NonNull

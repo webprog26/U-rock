@@ -44,4 +44,6 @@ public interface MainPresenter {
     void openSettingsActivity(final Intent intent);
 
     void openFeedbackActivity();
+
+    void loadArticlesDataWithDataRepository();
 }

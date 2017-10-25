@@ -1,5 +1,6 @@
 package com.developer.webprog26.u_rock.di.components;
 
+import com.developer.webprog26.u_rock.data_loading.DataRepositoryImpl;
 import com.developer.webprog26.u_rock.di.components.subcomponents.MainPresenterSubcomponent;
 import com.developer.webprog26.u_rock.di.components.subcomponents.PreferencesPresenterSubcomponent;
 import com.developer.webprog26.u_rock.di.components.subcomponents.fragments_subcomponents.BookmarksScreenPresenterSubcomponent;
@@ -20,12 +21,15 @@ import com.developer.webprog26.u_rock.mvp.impls.MainPresenterImpl;
 import com.developer.webprog26.u_rock.mvp.impls.fragments_presenters_impls.SettingsFragmentPresenterImpl;
 import com.developer.webprog26.u_rock.mvp.interfaces.fragments_presenters.SettingsFragmentPresenter;
 
+import javax.inject.Singleton;
+
 import dagger.Component;
 
 /**
  * This interface declares methods for dependencies injections
  */
 @Component(modules = {AppModule.class})
+@Singleton
 public interface AppComponent {
 
     MainPresenterSubcomponent plus(MainPresenterModule module);
@@ -39,4 +43,5 @@ public interface AppComponent {
 
     void inject(MainPresenterImpl target);
     void inject(SettingsFragmentPresenterImpl target);
+    void inject(DataRepositoryImpl target);
 }
