@@ -1,8 +1,11 @@
 package com.developer.webprog26.u_rock.mvp.interfaces.fragments_presenters;
 
 import com.developer.webprog26.u_rock.mvp.interfaces.MainView;
+import com.developer.webprog26.u_rock.mvp.interfaces.fragments_views.HomeScreenView;
 
 public interface HomeScreenPresenter {
+
+    void setView(final HomeScreenView view);
 
     /**
      * Notifies {@link MainView} to set user greetings message
@@ -22,4 +25,5 @@ public interface HomeScreenPresenter {
      */
     void notifyMainViewToSetNewCommentsMessage(final int newCommentsNumber);
 
+    void onStart();
 }

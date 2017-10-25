@@ -8,14 +8,18 @@ public class FullArticle extends Article {
 
     public FullArticle(long articleId,
                        String articleTitle,
+                       String articleText,
                        int articleCategoryId,
+                       long articleServerId,
                        String articleMainImageUrl,
                        String articleAuthor,
                        String dateArticlePublished,
                        boolean isArticleFavourite) {
         super(articleId,
                 articleTitle,
+                articleText,
                 articleCategoryId,
+                articleServerId,
                 articleMainImageUrl,
                 articleAuthor,
                 dateArticlePublished,
