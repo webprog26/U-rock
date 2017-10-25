@@ -30,6 +30,12 @@ public class PreferencesActivity extends BaseActivity implements PreferencesView
     }
 
     @Override
+    protected void onDestroy() {
+        getPreferencesPresenter().detach();
+        super.onDestroy();
+    }
+
+    @Override
     protected void setupActivityComponent() {
         URockApplication.getAppComponent().plus(new PreferencesPresenterModule()).inject(this);
     }

@@ -13,4 +13,6 @@ public interface SettingsFragmentPresenter {
     void setSettingsView(SettingsView settingsView);
 
     void handleRememberLastActiveCategoryPreferenceState(final boolean preferenceState);
+
+    void detach();
 }

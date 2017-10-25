@@ -10,4 +10,5 @@ public interface PreferencesPresenter {
 
     void setPreferencesView(final PreferencesView preferencesView);
     void setPreferencesFragment();
+    void detach();
 }

@@ -192,4 +192,9 @@ public class MainPresenterImpl implements MainPresenter {
     public void loadArticlesDataWithDataRepository() {
         getDataRepository().getArticlesData();
     }
+
+    @Override
+    public void detach() {
+        this.mainView = null;
+    }
 }

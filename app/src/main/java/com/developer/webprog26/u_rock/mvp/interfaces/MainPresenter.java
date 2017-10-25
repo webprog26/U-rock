@@ -46,4 +46,6 @@ public interface MainPresenter {
     void openFeedbackActivity();
 
     void loadArticlesDataWithDataRepository();
+
+    void detach();
 }
